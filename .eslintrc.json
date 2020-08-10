@@ -1,6 +1,7 @@
 {
     "env": {
-        "es6": true
+      "es6": true,
+      "browser": true,
     },
     "extends": [
       "plugin:react/recommended",
@@ -29,6 +30,8 @@
       "prettier"
     ],
     "rules": {
+      "import/no-duplicates": "off",
+      "no-unused-expressions": "off",
       "camelcase": "off",
       "react/jsx-one-expression-per-line": "off",
       "react-hooks/rules-of-hooks": "error",
