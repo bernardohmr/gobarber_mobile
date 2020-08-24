@@ -22,9 +22,18 @@ export const UserAvatarButton = styled.TouchableOpacity`
   margin-top: 32px;
 `;
 
+export const SignOutButton = styled.TouchableOpacity`
+  margin-top: 40px;
+`;
+
 export const UserAvatar = styled.Image`
   width: 186px;
   height: 186px;
   border-radius: 98px;
   align-self: center;
+`;
+
+export const HeaderButtonsContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;

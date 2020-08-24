@@ -28,6 +28,8 @@ import {
   BackButton,
   UserAvatarButton,
   UserAvatar,
+  SignOutButton,
+  HeaderButtonsContainer,
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 
@@ -40,7 +42,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
@@ -153,13 +155,17 @@ const Profile: React.FC = () => {
         api.patch('users/avatar', data).then(apiResponse => {
           updateUser(apiResponse.data);
         });
-      }
+      },
     );
   }, [updateUser, user.id]);
 
   const handleGoBack = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
+
+  const handleSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
 
   return (
     <KeyboardAvoidingView
@@ -172,9 +178,14 @@ const Profile: React.FC = () => {
         // contentContainerStyle={{ flex: 1 }}
       >
         <Container>
-          <BackButton onPress={handleGoBack}>
-            <Icon name="chevron-left" size={24} color="#999591" />
-          </BackButton>
+          <HeaderButtonsContainer>
+            <BackButton onPress={handleGoBack}>
+              <Icon name="chevron-left" size={24} color="#999591" />
+            </BackButton>
+            <SignOutButton onPress={handleSignOut}>
+              <Icon name="power" size={24} color="#999591" />
+            </SignOutButton>
+          </HeaderButtonsContainer>
 
           <UserAvatarButton onPress={handleUpdateAvatar}>
             <UserAvatar source={{ uri: user.avatar_url }} />
