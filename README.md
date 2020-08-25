@@ -1,4 +1,4 @@
-# GoBarber Server
+# GoBarber Mobile
 
 
 <!-- PROJECT LOGO -->
